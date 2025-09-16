@@ -1,10 +1,10 @@
 # ai-cat-api
 
-ねこの人格を持ったAIとお話できるサービスのバックエンドAPI
+ねこの人格を持った AI とお話できるサービスのバックエンド API
 
 ## Getting Started
 
-MacOSを利用する前提の手順になります。
+MacOS を利用する前提の手順になります。
 
 ### 環境変数の設定
 
@@ -31,21 +31,21 @@ export PLANET_SCALE_TEST_DB_BRANCH=参照するPlanetScaleのデータベースB
 
 #### `SSL_CERT_PATH` について
 
-`SSL_CERT_PATH` はSSL証明書のパスを指定します。
+`SSL_CERT_PATH` は SSL 証明書のパスを指定します。
 
 以下のコマンドで証明書の場所を特定出来ます。
 
 ### `PLANET_SCALE_` から始まる環境変数について
 
-データベースのテストの速度低下を回避する為に PlanetScaleの以下のAPIを利用して取得したDBSchemaを使ってMySQLのコンテナにテスト用のテーブルを作成しています。
+データベースのテストの速度低下を回避する為に PlanetScale の以下の API を利用して取得した DBSchema を使って MySQL のコンテナにテスト用のテーブルを作成しています。
 
 https://api-docs.planetscale.com/reference/get-a-branch-schema
 
-`PLANET_SCALE_SERVICE_TOKEN_ID` と `PLANET_SCALE_SERVICE_TOKEN_SECRET` はAPIの認証情報となります。
+`PLANET_SCALE_SERVICE_TOKEN_ID` と `PLANET_SCALE_SERVICE_TOKEN_SECRET` は API の認証情報となります。
 
 必要なスコープは https://api-docs.planetscale.com/reference/get-a-branch-schema を参照してください。
 
-Service tokensの発行方法は下記のドキュメントに記載されています。
+Service tokens の発行方法は下記のドキュメントに記載されています。
 
 https://api-docs.planetscale.com/reference/service-tokens
 
@@ -65,7 +65,7 @@ OPENSSLDIR: "/private/etc/ssl"
 export SSL_CERT_PATH=/private/etc/ssl/cert.pem
 ```
 
-### uvのインストール
+### uv のインストール
 
 Homebrew でインストールを実施します。
 
@@ -73,7 +73,7 @@ Homebrew でインストールを実施します。
 brew install uv
 ```
 
-### 依存packageのインストール & 仮想環境の作成
+### 依存 package のインストール & 仮想環境の作成
 
 以下を実行します。
 
@@ -81,9 +81,9 @@ brew install uv
 uv sync --frozen
 ```
 
-### Dockerによる環境構築
+### Docker による環境構築
 
-[Docker Desktop](https://www.docker.com/products/docker-desktop/) もしくは [OrbStack](https://orbstack.dev/) がインストールされている場合はDockerによる環境構築も可能です。
+[Docker Desktop](https://www.docker.com/products/docker-desktop/) もしくは [OrbStack](https://orbstack.dev/) がインストールされている場合は Docker による環境構築も可能です。
 
 以下のコマンドでコンテナを起動します。
 
@@ -91,9 +91,9 @@ uv sync --frozen
 docker compose up --build -d
 ```
 
-※ 2回目以降は `docker compose up -d` だけで大丈夫です。
+※ 2 回目以降は `docker compose up -d` だけで大丈夫です。
 
-以下のコマンドを実行してSSEのレスポンスが返ってくれば正常動作しています。
+以下のコマンドを実行して SSE のレスポンスが返ってくれば正常動作しています。
 
 ```bash
 API_CREDENTIAL=`echo -n "$BASIC_AUTH_USERNAME:$BASIC_AUTH_PASSWORD" | base64`
@@ -147,7 +147,7 @@ make format-container
 make run-token-creator-container
 ```
 
-### コンテナ内のMySQLに接続する
+### コンテナ内の MySQL に接続する
 
 以下で接続が可能です。
 
@@ -181,13 +181,13 @@ docker compose down --rmi all --volumes --remove-orphans
 brew install make
 ```
 
-### Linterを実行
+### Linter を実行
 
 ```bash
 make lint
 ```
 
-### Formatterを実行
+### Formatter を実行
 
 ```bash
 make format
@@ -195,15 +195,15 @@ make format
 
 ### テストコードの実行
 
-テストコードの実行はDockerコンテナを立ち上げる必要があります。
+テストコードの実行は Docker コンテナを立ち上げる必要があります。
 
-このREADME内の「Dockerによる環境構築」を参考にコンテナを起動してから下記を実行します。
+この README 内の「Docker による環境構築」を参考にコンテナを起動してから下記を実行します。
 
 ```bash
 make test-container
 ```
 
-### typecheckの実行
+### typecheck の実行
 
 ```bash
 make typecheck
@@ -213,7 +213,7 @@ make typecheck
 
 以下を実行するとアプリケーションサーバーが起動します。
 
-ただしMySQLのコンテナが立ち上がっている必要があるので結局はDockerを利用する事になります。
+ただし MySQL のコンテナが立ち上がっている必要があるので結局は Docker を利用する事になります。
 
 ただしデバッガーでブレイクポイント等を利用する場合はこちらのほうがやりやすいと思います。
 
@@ -240,13 +240,13 @@ http://0.0.0.0:8000/cats/moko/messages-for-guest-users
 
 ## テストコードの作成について
 
-GitHubActions上のテストコードは並列実行されています。
+GitHubActions 上のテストコードは並列実行されています。
 
-その為、固定のDB名を用いたテストコードだとテストが失敗する可能性があります。
+その為、固定の DB 名を用いたテストコードだとテストが失敗する可能性があります。
 
-既存テストコードを参考にテストケース毎にユニークなDB名を生成するようにお願いします。（`tests/db/setup_test_database.py` の `create_test_db_name` を利用します）
+既存テストコードを参考にテストケース毎にユニークな DB 名を生成するようにお願いします。（`tests/db/setup_test_database.py` の `create_test_db_name` を利用します）
 
-ローカルのMySQLコンテナにはどんどんテスト用のデータベースが作成されてしまうので、定期的に以下を実行してコンテナを作り直す事を推奨します。
+ローカルの MySQL コンテナにはどんどんテスト用のデータベースが作成されてしまうので、定期的に以下を実行してコンテナを作り直す事を推奨します。
 
 ```bash
 # 一度コンテナを削除（MySQLのコンテナ内のデータも含めて削除）
@@ -256,16 +256,15 @@ docker compose down --rmi all --volumes --remove-orphans
 docker compose up --build -d
 ```
 
+## LLM の精度評価を行う
 
-## LLMの精度評価を行う
-
-以下のテストコードを実行するとねこの人格を持ったAIのレスポンス評価をLLMを使って評価します。
+以下のテストコードを実行するとねこの人格を持った AI のレスポンス評価を LLM を使って評価します。
 
 ```bash
 rye run pytest -vv -s tests/infrastructure/repository/openai/openai_cat_message_repository/test_generate_message_for_guest_user.py
 ```
 
-ただし普段はテスト実行時間があまりにも長い事や、APIの利用料金が高くなってしまうのでテストをスキップするようにしています。
+ただし普段はテスト実行時間があまりにも長い事や、API の利用料金が高くなってしまうのでテストをスキップするようにしています。
 
 実行する際は `tests/infrastructure/repository/openai/openai_cat_message_repository/test_generate_message_for_guest_user.py` の以下の部分をコメントアウトしてください。
 
